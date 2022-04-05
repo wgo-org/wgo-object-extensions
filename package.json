@@ -6,12 +6,12 @@
   "scripts": {
     "start": "nodemon",
     "build": "npx rimraf build && tsc",
-    "publicate": "npx rimraf build && tsc && npm publish",
+    "publicate": "npm version prerelease && tsc && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wgo-org/wgo-object-extensions.git"
+    "url": "git+https://github.com/wisegar-org/wgo-object-extensions.git"
   },
   "keywords": [
     "object",
@@ -23,9 +23,9 @@
   "author": "Wisegar.org",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wgo-org/wgo-object-extensions/issues"
+    "url": "https://github.com/wisegar-org/wgo-object-extensions/issues"
   },
-  "homepage": "https://github.com/wgo-org/wgo-object-extensions#readme",
+  "homepage": "https://github.com/wisegar-org/wgo-object-extensions#readme",
   "devDependencies": {
     "@types/node": "^16.11.10",
     "nodemon": "^2.0.15",
