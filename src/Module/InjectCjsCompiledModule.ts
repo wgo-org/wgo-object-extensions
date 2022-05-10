@@ -1,7 +1,10 @@
 const Module = require('module');
 const path = require('path');
 
-export const exportString = function (code: string, filename?: string, opts?: any) {
+/**
+ * @experimental
+ */
+export const InjectCjsCompiledModule = function (code: string, filename?: string, opts?: any) {
   if (typeof filename === 'object') {
     opts = filename;
     filename = undefined;
@@ -31,4 +34,4 @@ export const exportString = function (code: string, filename?: string, opts?: an
   return exports;
 };
 
-module.exports = exportString;
+module.exports = InjectCjsCompiledModule;
