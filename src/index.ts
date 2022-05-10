@@ -20,3 +20,7 @@ export * from './Execute/ExecutionExtensions';
 export * from './Module/InjectCjsModule';
 export * from './Module/InjectHtmlScript';
 export * from './Module/InjectHtmlScriptModule';
+/**
+ * @exports String Extensions
+ */
+export * from './String/CamelCase';
