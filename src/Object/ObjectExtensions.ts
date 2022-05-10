@@ -45,19 +45,6 @@ export const StringToBoolean = (strObj: string) => {
   return IsStringEmptyNullOrUndefined(strObj) ? false : strObj === '1';
 };
 
-export const HtmlToText = (html: string) => {
-  html = html.replace(/<style([\s\S]*?)<\/style>/gi, '');
-  html = html.replace(/<script([\s\S]*?)<\/script>/gi, '');
-  html = html.replace(/<\/div>/gi, '\n');
-  html = html.replace(/<\/li>/gi, '\n');
-  html = html.replace(/<li>/gi, '  *  ');
-  html = html.replace(/<\/ul>/gi, '\n');
-  html = html.replace(/<\/p>/gi, '\n');
-  html = html.replace(/<br\s*[/]?>/gi, '\n');
-  html = html.replace(/<[^>]+>/gi, '');
-  return html;
-};
-
 export const SubString = (str: string, max: number) => {
   if (IsNullOrUndefined(str)) return '';
   if (str.length <= max) return str;
