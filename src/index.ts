@@ -17,4 +17,3 @@ export * from './Execute/ExecutionExtensions';
 /**
  * @exports Code Injection Extensions
  */
-export * from './Module/injectCjsCompiledModule';

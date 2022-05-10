@@ -1,10 +1,10 @@
-const Module = require('module');
-const path = require('path');
-
 /**
  * @experimental
  */
-export const InjectCjsCompiledModule = function (code: string, filename?: string, opts?: any) {
+const InjectCjsCompiledModule = function (code: string, filename?: string, opts?: any) {
+  const Module = require('module');
+  const path = require('path');
+
   if (typeof filename === 'object') {
     opts = filename;
     filename = undefined;
