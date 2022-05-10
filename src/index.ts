@@ -24,3 +24,4 @@ export * from './Module/InjectHtmlScriptModule';
  * @exports String Extensions
  */
 export * from './String/CamelCase';
+export * from './String/HtmlCases';
