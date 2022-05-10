@@ -1,10 +1,8 @@
-type InputType = object | string | undefined;
-
 export const IsFuncAndDefined = (object: any) => {
   return !IsNullOrUndefined(object) && typeof object === 'function';
 };
 
-export const IsNotStringOrEmpty = (object: InputType) => {
+export const IsNotStringOrEmpty = (object: any) => {
   return typeof object !== 'string' || object === '';
 };
 
@@ -12,7 +10,7 @@ export const IsFunc = (object: unknown) => {
   return typeof object === 'function';
 };
 
-export const IsDefinedFunc = (object: InputType) => {
+export const IsDefinedFunc = (object: any) => {
   return !IsNullOrUndefined(object) && typeof object === 'function';
 };
 
@@ -20,7 +18,7 @@ export const IsArray = (object: unknown) => {
   return Array.isArray(object);
 };
 
-export const IsNotArrayOrEmpty = (object: InputType) => {
+export const IsNotArrayOrEmpty = (object: any) => {
   return IsNullOrUndefined(object) || !Array.isArray(object) || object.length === 0;
 };
 
@@ -103,16 +101,16 @@ export const EvaluateExpresion = (
   return resultTest;
 };
 
-export function IsUndefined(obj: InputType) {
+export function IsUndefined(obj: any) {
   return obj === undefined;
 }
-export const IsNull = (obj: InputType) => {
+export const IsNull = (obj: any) => {
   return obj === null;
 };
 export const useNullableNumber = (obj: any) => {
   return obj === new Number() && obj === 0 ? null : (obj as number);
 };
-export const IsNullOrUndefined = (obj: InputType) => {
+export const IsNullOrUndefined = (obj: any) => {
   return IsNull(obj) || IsUndefined(obj);
 };
 export const IsStringEmptyNullOrUndefined = (obj: string) => {
