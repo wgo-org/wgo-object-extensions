@@ -114,7 +114,7 @@ export const EvaluateExpresion = (
   return resultTest;
 };
 
-export function IsUndefined(obj: object) {
+export function IsUndefined(obj: object | undefined) {
   return obj === undefined;
 }
 export const IsNull = (obj: any) => {
