@@ -101,17 +101,26 @@ export const EvaluateExpresion = (
   return resultTest;
 };
 
-export function IsUndefined(obj: any) {
+export const IsUndefined = (obj: any) => {
   return obj === undefined;
-}
+};
+export const IsNotUndefined = (obj: any) => {
+  return obj !== undefined;
+};
 export const IsNull = (obj: any) => {
   return obj === null;
 };
-export const useNullableNumber = (obj: any) => {
+export const IsNotNull = (obj: any) => {
+  return obj !== null;
+};
+export const UseNullableNumber = (obj: any) => {
   return obj === new Number() && obj === 0 ? null : (obj as number);
 };
 export const IsNullOrUndefined = (obj: any) => {
   return IsNull(obj) || IsUndefined(obj);
+};
+export const IsNotNullOrUndefined = (obj: any) => {
+  return IsNotNull(obj) && IsNotUndefined(obj);
 };
 export const IsStringEmptyNullOrUndefined = (obj: string) => {
   return IsNullOrUndefined(obj) || obj === '';
