@@ -1,7 +1,7 @@
 {
   "name": "wgo-utils",
   "version": "0.0.2",
-  "description": "JS Object Extensions Utils",
+  "description": "JS Object Extensions & Utilities",
   "main": "build/index.js",
   "scripts": {
     "start": "nodemon",
