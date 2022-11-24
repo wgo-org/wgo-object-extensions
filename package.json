@@ -1,5 +1,5 @@
 {
-  "name": "wgo-utils",
+  "name": "@wisegar-org/wgo-object-extensions",
   "version": "0.0.2",
   "description": "JS Object Extensions & Utilities",
   "main": "build/index.js",
