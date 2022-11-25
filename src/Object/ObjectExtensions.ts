@@ -1,3 +1,19 @@
+export interface Object {
+  IsNull(object: Object): boolean;
+  IsUndefined(object: Object): boolean;
+  IsNullOrUndefined(object: Object): boolean;
+}
+
+(Object.prototype as any).IsNull = function (obj: Object) {
+  return obj === null;
+};
+(Object.prototype as any).IsUndefined = function (obj: Object) {
+  return obj === undefined;
+};
+(Object.prototype as any).IsNullOrUndefined = function (obj: Object) {
+  return obj === null || obj === undefined;
+};
+
 export const IsFuncAndDefined = (object: any) => {
   return !IsNullOrUndefined(object) && typeof object === 'function';
 };
