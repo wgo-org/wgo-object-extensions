@@ -1,5 +1,7 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { IsNullOrUndefined, IsString, IsStringEmptyNullOrUndefined } from '../Object/ObjectExtensions';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
 
 export const MASK_YYYY_MM_DD_HH_mm_ss = 'YYYY-MM-DD HH:mm:ss';
 export const MASK_YYYY_MM_DD_HH_mm = 'YYYY-MM-DD HH:mm';
@@ -27,11 +29,11 @@ export const GetStringDate = (date: Date, mask: string): string => {
   return formattedDate;
 };
 export const GetDate = (date: string, mask?: string): Date => {
-  const momentObj = moment(date, mask);
-  if (IsNullOrUndefined(momentObj) || !momentObj.isValid()) {
+  const dayjsObj = dayjs(date, mask);
+  if (IsNullOrUndefined(dayjsObj) || !dayjsObj.isValid()) {
     throw new Error('Invalid date!');
   }
-  return momentObj.toDate();
+  return dayjsObj.toDate();
 };
 
 export const IsDateValid = (date: string, mask?: string): boolean => {
@@ -39,8 +41,8 @@ export const IsDateValid = (date: string, mask?: string): boolean => {
     console.debug('Invalid date parameter on IsDateValid');
     return false;
   }
-  const momentObj = IsStringEmptyNullOrUndefined(mask as any) ? moment(date) : moment(date, mask);
-  return IsNullOrUndefined(momentObj) ? false : momentObj.isValid();
+  const dayjsObj = IsStringEmptyNullOrUndefined(mask as any) ? dayjs(date) : dayjs(date, mask);
+  return IsNullOrUndefined(dayjsObj) ? false : dayjsObj.isValid();
 };
 export const GetMaskedDate = (date: Date | string | undefined, toMask: string, fromMask?: string): string => {
   if (IsNullOrUndefined(date)) {
@@ -48,9 +50,9 @@ export const GetMaskedDate = (date: Date | string | undefined, toMask: string, f
     return '';
   }
   if (IsStringEmptyNullOrUndefined(fromMask as any)) {
-    return moment(date, toMask).format(toMask);
+    return dayjs(date, toMask).format(toMask);
   }
-  return moment(date, fromMask).format(toMask);
+  return dayjs(date, fromMask).format(toMask);
 };
 export const IsDateValid2 = (date: string | Date, mask?: string): boolean => {
   if (IsNullOrUndefined(date)) {
