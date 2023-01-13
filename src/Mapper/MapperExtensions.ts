@@ -1,5 +1,28 @@
 import { IsNullOrUndefined } from '../Object/ObjectExtensions';
 
+const getObjTreePropertiesNames = <T>(objInstance: T): string[] => {
+  const leafKeys = Object.keys(objInstance);
+  const protoLeafKeys = Object.keys(Object.getPrototypeOf(objInstance));
+  return leafKeys.concat(protoLeafKeys);
+};
+
+export type OnMapSet<S, T> = (propKey: keyof S, propValue: unknown, sourceObj: S, targetObj: T) => void;
+
+export const mapSync = <S, T>(sourceObj: S, targetObjType: { new (): T }, onSet?: OnMapSet<S, T>): T => {
+  if (IsNullOrUndefined(sourceObj)) throw new Error('Invalid parameter sourceObj');
+  const targetObj = new targetObjType();
+  const sourceKeys = getObjTreePropertiesNames<S>(sourceObj);
+  if (IsNullOrUndefined(sourceKeys) || sourceKeys.length === 0) throw new Error('Invalid sourceObj properties keys');
+  for (const key of sourceKeys) {
+    const mySourceVar = key.valueOf() as keyof S;
+    targetObj[key] = sourceObj[mySourceVar];
+    if (!IsNullOrUndefined(onSet)) {
+      onSet(mySourceVar, sourceObj[mySourceVar], sourceObj, targetObj);
+    }
+  }
+  return targetObj;
+};
+
 export const Map = async <S, T>(
   sourceObj: any,
   targetObj: any,
