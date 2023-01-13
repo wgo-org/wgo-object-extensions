@@ -113,6 +113,9 @@ export const useNullableNumber = (obj: any) => {
 export const IsNullOrUndefined = (obj: any) => {
   return IsNull(obj) || IsUndefined(obj);
 };
+export const IsNotNullOrUndefined = (obj: any) => {
+  return !IsNullOrUndefined(obj);
+};
 export const IsStringEmptyNullOrUndefined = (obj: string) => {
   return IsNullOrUndefined(obj) || obj === '';
 };
