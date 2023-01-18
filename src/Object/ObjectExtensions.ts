@@ -148,3 +148,9 @@ export class ValidationError extends Error {
 export const stringToBoolean = (strObj: string): boolean => {
   return IsStringEmptyNullOrUndefined(strObj) ? false : strObj === '1';
 };
+
+export const AreStringEquals = (strA: string, strB: string) => {
+  if (IsStringEmptyNullOrUndefined(strA)) return false;
+  if (IsStringEmptyNullOrUndefined(strB)) return false;
+  return strA.trim().toLocaleUpperCase() === strB.trim().toLocaleUpperCase();
+};
