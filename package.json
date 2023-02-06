@@ -1,6 +1,6 @@
 {
   "name": "wgo-object-extensions",
-  "version": "0.0.2-7",
+  "version": "0.0.2",
   "description": "JS Object Extensions & Utilities",
   "main": "build/index.js",
   "scripts": {
