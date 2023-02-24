@@ -110,13 +110,13 @@ export const IsNull = (obj: any) => {
 export const useNullableNumber = (obj: any) => {
   return obj === new Number() && obj === 0 ? null : (obj as number);
 };
-export const IsNullOrUndefined = (obj: any) => {
+export const IsNullOrUndefined = (obj?: any) => {
   return IsNull(obj) || IsUndefined(obj);
 };
-export const IsNotNullOrUndefined = (obj: any) => {
+export const IsNotNullOrUndefined = (obj?: any) => {
   return !IsNullOrUndefined(obj);
 };
-export const IsStringEmptyNullOrUndefined = (obj: string) => {
+export const IsStringEmptyNullOrUndefined = (obj?: string) => {
   return IsNullOrUndefined(obj) || obj === '';
 };
 export const IsString = (obj: any) => {
@@ -128,10 +128,10 @@ export function getNameOf<T>(key: keyof T, instance?: T): keyof T {
 export function getValueOf<T>(key: keyof T, instance: T): keyof T {
   return instance[key.toString()];
 }
-export function IsKeyOf<T>(key: any, instance: T): key is keyof T {
+export function IsKeyOf<T extends object>(key: any, instance: T): key is keyof T {
   return key in instance;
 }
-export function getAsKeyOf<T>(key: string, instance: T): keyof T {
+export function getAsKeyOf<T extends object>(key: string, instance: T): keyof T {
   if (IsKeyOf(key, instance)) return key as keyof T;
   throw new Error('Invalid keyof instance T');
 }
