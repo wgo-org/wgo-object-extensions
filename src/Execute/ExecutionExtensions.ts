@@ -28,3 +28,41 @@ export const executeCMD = (scriptPath: string) => {
   });
   child.stdin.end();
 };
+
+export const runScript = (cmd: string, cwd: string, onError?: (err: any) => void) => {
+  try {
+    const execSync = require('child_process');
+    execSync(cmd, {
+      cwd: cwd,
+      stdio: ['inherit'],
+    });
+  } catch (err: any) {
+    const { stderr, stdout, status, message } = err;
+    if (stderr) {
+      console.error(stderr.toString('utf8'));
+    }
+    if (stdout) {
+      console.error(stderr.toString('utf8'));
+    }
+    if (onError) onError(err);
+  }
+};
+
+export const runRawScript = (cmd: string, cwd: string, onError?: (err: any) => void) => {
+  try {
+    const execSync = require('child_process');
+    execSync(cmd, {
+      cwd: cwd,
+      stdio: 'inherit',
+    });
+  } catch (err: any) {
+    const { stderr, stdout, status, message } = err;
+    if (stderr) {
+      console.error(stderr.toString('utf8'));
+    }
+    if (stdout) {
+      console.error(stderr.toString('utf8'));
+    }
+    if (onError) onError(err);
+  }
+};
